@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入css 初始化的css 文件 -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- 引入公共样式的css 文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入详情页面的css文件 -->
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+
+<body>
+    <div class="preview_wrap fl">
+        <div class="preview_img">
+            <img src="upload/s3.png" alt="">
+            <div class="mask" style="display: none; left: 98px; top: 98px;"></div>
+            <div class="big" style="display: none;">
+                <img src="upload/big.jpg" alt="" class="bigImg" style="left: -298px; top: -298px;">
+            </div>
+        </div>
+
+
+        <div class="preview_list">
+            <a href="#" class="arrow_prev"></a>
+            <a href="#" class="arrow_next"></a>
+            <ul class="list_item">
+                <li>
+                    <img src="upload/pre.jpg" alt="">
+                </li>
+                <li class="current">
+                    <img src="upload/pre.jpg" alt="">
+                </li>
+                <li>
+                    <img src="upload/pre.jpg" alt="">
+                </li>
+                <li>
+                    <img src="upload/pre.jpg" alt="">
+                </li>
+                <li>
+                    <img src="upload/pre.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var preview_img = document.querySelector(".preview_img");
+        var mask = document.querySelector(".mask");
+        var big = document.querySelector(".big");
+
+        preview_img.onmouseover = function() {
+            mask.style.display = "block";
+            big.style.display = "block";
+        }
+        preview_img.onmouseout = function() {
+            mask.style.display = "none";
+            big.style.display = "none";
+        }
+        preview_img.onmousemove = function(e) {
+            //鼠标在盒子里的距离
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            //让鼠标在遮罩居中
+            var maskX = x - mask.offsetWidth / 2;
+            var maskY = y - mask.offsetHeight / 2;
+            var maskMax = this.offsetWidth - mask.offsetWidth;
+            if (maskX <= 0) {
+                maskX = 0;
+            } else if (maskX >= maskMax) {
+                maskX = maskMax;
+            }
+            if (maskY <= 0) {
+                maskY = 0;
+            } else if (maskY >= maskMax) {
+                maskY = maskMax;
+            }
+            mask.style.left = maskX + "px";
+            mask.style.top = maskY + "px";
+        }
+    </script>
+</body>
+
+</html>
