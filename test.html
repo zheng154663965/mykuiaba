@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    adlk
     <div class="preview_wrap fl">
         <div class="preview_img">
             <img src="upload/s3.png" alt="">
@@ -51,15 +52,15 @@
         var mask = document.querySelector(".mask");
         var big = document.querySelector(".big");
 
-        preview_img.onmouseover = function() {
+        preview_img.onmouseover = function () {
             mask.style.display = "block";
             big.style.display = "block";
         }
-        preview_img.onmouseout = function() {
+        preview_img.onmouseout = function () {
             mask.style.display = "none";
             big.style.display = "none";
         }
-        preview_img.onmousemove = function(e) {
+        preview_img.onmousemove = function (e) {
             //鼠标在盒子里的距离
             var x = e.pageX - this.offsetLeft;
             var y = e.pageY - this.offsetTop;
